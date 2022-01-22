@@ -8,4 +8,4 @@ you can meet another developers and shared your experiences on your favorites de
 [Trello](https://trello.com/b/w6jZEJdA/build) => Propose me your functionnality ideas
 
 
-Created by Alexis Verquin with <3
+Created by [Alexis Verquin](https://www.linkedin.com/in/alexis-verquin-a4924a43/) with :heart:
