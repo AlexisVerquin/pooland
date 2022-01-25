@@ -1,24 +1,24 @@
 // ./assets/components/Languages.js
-    
+
 import React, {Component} from 'react';
 import axios from 'axios';
-    
+
 class Languages extends Component {
     constructor() {
         super();
         this.state = { languages: [], loading: true};
     }
-    
+
     componentDidMount() {
-        this.getUsers();
+        this.getLanguages();
     }
-    
-    getUsers() {
+
+    getLanguages() {
        axios.get(`http://pooland.test/api/languages`).then(languages => {
            this.setState({ languages: languages.data, loading: false})
        })
     }
-    
+
     render() {
         const loading = this.state.loading;
         return(
@@ -36,7 +36,7 @@ class Languages extends Component {
                         ) : (
                             <div className={'row'}>
                                 { this.state.languages.map(language =>
-                                    <div className="col-md-10 offset-md-1 row-block" key={language.id}>
+                                    <div className="col-md-4 offset-md-1 row-block" key={language.id}>
                                         <ul id="sortable">
                                             <li>
                                                 <h4>  {language.name} </h4>
