@@ -3,7 +3,7 @@
 import React, {Component} from 'react';
 import {Route, Routes, Navigate, Link, withRouter, NavLink} from 'react-router-dom';
 import Users from './Users';
-import Posts from './Posts';
+import Profile from './Profile';
 import Languages from './Languages';
 
 class Navigations extends Component {
@@ -20,12 +20,16 @@ class Navigations extends Component {
                             <li className="nav-item active">
                                 <Link className={"nav-link"} to={"/user"}> Users </Link>
                             </li>
+                            <li className="nav-item active">
+                                <Link className={"nav-link"} to={"/profile"}> Profile </Link>
+                            </li>
                         </ul>
                     </div>
                 </nav>
                 <Routes>
                     <Route path='/languages' element={<Languages/>} />
                     <Route path='/user' element={<Users/>} />
+                    <Route path='/profile' element={<Profile/>} />
                 </Routes>
             </div>
         )

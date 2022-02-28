@@ -69,7 +69,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $avatar;
 
     /**
-     * @ORM\ManyToMany(targetEntity=language::class)
+     * @ORM\ManyToMany(targetEntity=Language::class)
      */
     private $user_languages;
 
@@ -240,14 +240,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection|language[]
+     * @return Collection|Language[]
      */
     public function getUserLanguages(): Collection
     {
         return $this->user_languages;
     }
 
-    public function addUserLanguage(language $userLanguage): self
+    public function addUserLanguage(Language $userLanguage): self
     {
         if (!$this->user_languages->contains($userLanguage)) {
             $this->user_languages[] = $userLanguage;
@@ -256,7 +256,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeUserLanguage(language $userLanguage): self
+    public function removeUserLanguage(Language $userLanguage): self
     {
         $this->user_languages->removeElement($userLanguage);
 

@@ -47,6 +47,7 @@ class Posts extends Component {
                                                 <div className="media">
                                                     <div className="media-body">
                                                         <h4>{post.title}</h4>
+                                                        <input type="checkbox" name={"test"} id={post.id} value={post.id}/>
                                                         <p>{post.body}</p>
                                                     </div>
                                                 </div>

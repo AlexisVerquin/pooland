@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\LanguageRepository;
+use App\Repository\UserRepository;
 
 class HomeController extends AbstractController
 {
@@ -57,14 +58,34 @@ class HomeController extends AbstractController
                 'imageURL' => 'https://randomuser.me/api/portraits/men/89.jpg'
             ]
         ];
-    
+
         $response = new Response();
 
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
         $response->setContent(json_encode($users));
-        
+
+        return $response;
+    }
+
+    /**
+     * @Route("/api/gotest", name="gotest")
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function gotest() {
+        $tab = [
+            ['key' => 1, 'name' => 'Alexis'],
+            ['key' => 2, 'name' => 'Helene'],
+            ['key' => 3, 'name' => 'Marty']
+        ];
+
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent(json_encode($tab));
+
         return $response;
     }
 
@@ -79,14 +100,36 @@ class HomeController extends AbstractController
         foreach($languages as $languages) {
             $data[] = ['id' => $languages->getId(), 'name' => $languages->getName()];
         }
-    
+
         $response = new Response();
 
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
         $response->setContent(json_encode($data));
-        
+
+        return $response;
+    }
+
+    /**
+     * @Route("/api/profile", name="profile")
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function getProfile(UserRepository $userRepository)
+    {
+        $user = $userRepository->findBy(['id' => 1]);
+
+        $data = [];
+        foreach($user as $u) {
+            $data[] = ['id' => $u->getId(), 'email' => $u->getEmail()];
+        }
+
+        $response = new Response();
+
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent(json_encode($data));
         return $response;
     }
 }
